@@ -25,7 +25,7 @@ subreddits = ['stocks']
 start_year = 2020
 end_year = 2021
 # directory on which to store the data
-base_directory = './data/'
+base_directory = './data/raw/'
 
 ### create directories to store data ###
 

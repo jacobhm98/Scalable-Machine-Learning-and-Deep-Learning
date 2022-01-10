@@ -6,7 +6,7 @@ tsla = yf.Ticker("TSLA")
 stock_info = tsla.info
 # get historical market data
 stock_data = tsla.history(period="2y")
-dirpath = "../data/price-movements"
+dirpath = "../data/raw/price-movements"
 if not os.path.exists(dirpath):
     os.makedirs(dirpath)
 
