@@ -25,7 +25,7 @@ subreddits = ['stocks']
 start_year = 2020
 end_year = 2021
 # directory on which to store the data
-base_directory = './data-test/'
+base_directory = './data/'
 
 ### create directories to store data ###
 
@@ -101,8 +101,7 @@ for year in range(start_year, end_year+1):
 
     ### save data ###
 
-        pd.DataFrame(submissions_dict).to_csv(subredditdirpath + '/' + submissions_csv_path,
-                                              index=False)
+        pd.DataFrame(submissions_dict).to_csv(subredditdirpath + '/' + submissions_csv_path, index=False)
 
         action = f"\t\t[Info] Found submissions: {pd.DataFrame(submissions_dict).shape[0]}"
         log_action(action)
