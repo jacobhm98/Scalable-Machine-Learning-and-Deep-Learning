@@ -15,12 +15,11 @@ class SBert(torch.nn.Module):
     def forward(self, sentences):
         sent1 = sentences[0]
         sent2 = sentences[1]
-        left_bert_output = torch.mean((self.bert_layer(input_ids=sent1["input_ids"].squeeze(0))).last_hidden_state,
-                                      dim=1)
-        right_bert_output = torch.mean((self.bert_layer(input_ids=sent2["input_ids"].squeeze(0))).last_hidden_state,
-                                       dim=1)
+        left_bert_output = torch.mean((self.bert_layer(input_ids=sent1["input_ids"].squeeze(0))).last_hidden_state, dim=1)
+        right_bert_output = torch.mean((self.bert_layer(input_ids=sent2["input_ids"].squeeze(0))).last_hidden_state, dim=1)
         if not self.regression:
             x = self.concatenate_tensors(left_bert_output, right_bert_output)
+            x = self.fc(x)
             x = self.softmax(x)
         else:
             x = self.cosine_similarity(left_bert_output, right_bert_output)
@@ -39,4 +38,4 @@ class SBert(torch.nn.Module):
 
     def concatenate_tensors(self, u, v):
         diff = torch.sub(u, v)
-        return torch.cat((u, v, diff))
+        return torch.cat((u, v, diff), dim=1)

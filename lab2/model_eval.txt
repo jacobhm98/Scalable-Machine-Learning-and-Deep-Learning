@@ -1,0 +1,14 @@
+regression model after 1 epoch:
+Observed correlation 0.6055384928572436
+
+Regression model after 2 epochs:
+Observed correlation 0.6369096627233359
+
+Regression model after 3 epochs:
+Observed correlation 0.6297716245560848
+
+Regression model after 4 epochs:
+Observed correlation 0.588
+
+Classification model without fine-tuning on regression objective:
+Observed correlation 0.0914
